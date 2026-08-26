@@ -1,46 +1,46 @@
-# Attribution — słowniki PocketBook (Blumek Labs)
+# Attribution — PocketBook dictionaries (Blumek Labs)
 
-Pliki w katalogu [`dictionaries/`](dictionaries/) (format PocketBook SDIC `.dic`) zawierają **treść leksykalną** pochodzącą z otwartych projektów.
+Files in [`dictionaries/`](dictionaries/) (PocketBook SDIC `.dic` format) contain **lexical content** from open projects.
 
-## Licencja treści słowników
+## Dictionary content license
 
-**Creative Commons Attribution–ShareAlike (CC BY-SA)** — zgodnie z licencjami źródeł poniżej.
+**Creative Commons Attribution–ShareAlike (CC BY-SA)** — following the upstream licenses below.
 
-Przy dalszej dystrybucji plików `.dic` lub istotnych fragmentów haseł:
+When redistributing the `.dic` files or substantial extracts of their entries:
 
-1. Podaj atrybucję źródeł (Wiktionary / Kaikki / FreeDict — jak poniżej).
-2. Zachowaj warunki ShareAlike, jeśli wymagane przez CC BY-SA upstream.
-3. Dopisz, że pakiet skompilował **Blumek Labs**  
-   ([strona](https://blumeklabs.github.io/) · [repo](https://github.com/blumeklabs/blumeklabs.github.io)).
+1. Credit the sources (Wiktionary / Kaikki / FreeDict — as listed below).
+2. Keep ShareAlike terms where required by upstream CC BY-SA.
+3. Credit that the pack was compiled by **Blumek Labs**  
+   ([site](https://blumeklabs.github.io/) · [repo](https://github.com/blumeklabs/blumeklabs.github.io)).
 
-Pełny tekst CC BY-SA 4.0: https://creativecommons.org/licenses/by-sa/4.0/
+Full CC BY-SA 4.0 text: https://creativecommons.org/licenses/by-sa/4.0/
 
-## Źródła (co poszło do którego typu danych)
+## Sources
 
-| Źródło | Co wzięliśmy | Licencja (typowo) |
-|--------|----------------|-------------------|
-| [Wiktionary](https://www.wiktionary.org/) via [Kaikki.org](https://kaikki.org/) / [wiktextract](https://github.com/tatuylonen/wiktextract) | Hasła, tłumaczenia, formy odmiany (EN, DE oraz dane z angielskiego / niemieckiego dumpa) | **CC BY-SA** |
-| [plwiktionary](https://pl.wiktionary.org/) via Kaikki | Polskie definicje/glossy dla haseł DE i EN; tłumaczenia PL↔DE / PL↔EN; formy PL | **CC BY-SA** |
-| [FreeDict](https://freedict.org/) + WikDict | Pary `deu-pol`, `pol-deu`, `eng-pol`, `pol-eng` (StarDict) | **CC BY-SA** (oraz warunki podane w pakietach FreeDict) |
+| Source | What we used | Typical license |
+|--------|----------------|-----------------|
+| [Wiktionary](https://www.wiktionary.org/) via [Kaikki.org](https://kaikki.org/) / [wiktextract](https://github.com/tatuylonen/wiktextract) | Headwords, translations, inflection forms (EN/DE dumps) | **CC BY-SA** |
+| [Polish Wiktionary](https://pl.wiktionary.org/) via Kaikki | Polish glosses for DE/EN; PL↔DE / PL↔EN translations; Polish forms | **CC BY-SA** |
+| [FreeDict](https://freedict.org/) + WikDict | Pairs `deu-pol`, `pol-deu`, `eng-pol`, `pol-eng` (StarDict) | **CC BY-SA** (plus terms in FreeDict packages) |
 
-Konkretne wydania FreeDict użyte przy budowie m.in.:
+FreeDict releases used in the build include:
 
 - `freedict-deu-pol` / `freedict-pol-deu` (WikDict, 2025.11.23)
 - `freedict-eng-pol` (Piotrowski+Saloni / FreeDict 0.2.1)
 - `freedict-pol-eng` (WikDict, 2025.11.23)
 
-## Co jest pracą Blumek Labs (nie „treścią CC słów”)
+## What is Blumek Labs work (not the CC word data)
 
-- pipeline kompilacji i łączenia źródeł,
-- dodanie form odmiany pod lookup na czytniku,
-- konwersja do natywnego formatu PocketBook `.dic` (SDIC),
-- branding / credits w pakiecie,
-- ta strona portfolio.
+- compile / merge pipeline,
+- inflection forms for better on-device lookup,
+- conversion to native PocketBook `.dic` (SDIC),
+- branding / credits in the pack,
+- this portfolio site.
 
-Strona i kod packaging: zobacz [`LICENSE`](LICENSE) (MIT + notice o danych CC).
+Site and packaging code: see [`LICENSE`](LICENSE) (MIT + notice about CC data).
 
-## Repozytorium
+## Repository
 
-Kod strony, pliki `.dic`, checksumy i ta atrybucja:
+Site code, `.dic` files, checksums, and this attribution:
 
 **https://github.com/blumeklabs/blumeklabs.github.io**

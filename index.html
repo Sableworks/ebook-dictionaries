@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Blumek Labs — PocketBook dictionaries</title>
-  <meta name="description" content="Open PocketBook dictionaries (DE↔PL, EN↔PL) compiled by Blumek Labs from Wiktionary and FreeDict." />
+  <meta name="description" content="Open PocketBook dictionaries (DE↔PL, EN↔PL) compiled by Blumek Labs from Wiktionary and FreeDict (CC BY-SA)." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -78,7 +78,7 @@
     }
 
     .lede {
-      max-width: 34rem;
+      max-width: 36rem;
       font-size: clamp(1.05rem, 2.2vw, 1.25rem);
       color: var(--mist);
       margin: 0.35rem 0 0;
@@ -167,7 +167,7 @@
     }
     .section-lead {
       color: var(--mist);
-      max-width: 40rem;
+      max-width: 42rem;
       margin: 0 0 2rem;
     }
 
@@ -224,7 +224,7 @@
 
     .prose p { color: var(--mist); max-width: 46rem; }
     .prose a { color: var(--accent); }
-    .prose ul {
+    .prose ul, .prose ol {
       color: var(--mist);
       padding-left: 1.2rem;
       max-width: 46rem;
@@ -267,107 +267,106 @@
     <header class="hero">
       <h1 class="brand">Blumek<br /><em>Labs</em></h1>
       <p class="lede">
-        Otwarte słowniki PocketBook (DE↔PL, EN↔PL) — skompilowane pod czytanie z długim naciśnięciem słowa, z formami odmiany.
+        Open PocketBook dictionaries (DE↔PL, EN↔PL) — built for long-press lookup while reading, with inflected word forms.
       </p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="#download">Pobierz słowniki</a>
-        <a class="btn btn-ghost" href="#sources">Źródła &amp; CC BY-SA</a>
+        <a class="btn btn-primary" href="#download">Download dictionaries</a>
+        <a class="btn btn-ghost" href="#sources">Sources &amp; CC BY-SA</a>
         <a class="btn btn-ghost" href="https://github.com/blumeklabs/blumeklabs.github.io">GitHub repo</a>
       </div>
       <div class="ink-plane" aria-hidden="true"><span class="scan"></span></div>
     </header>
 
     <section id="download">
-      <h2>Słowniki</h2>
+      <h2>Dictionaries</h2>
       <p class="section-lead">
-        Wrzuć pliki <code>.dic</code> do ukrytego folderu <code>system/dictionaries</code> na PocketBook Verse (i podobnych).
-        Treść haseł: <strong>CC BY-SA</strong> (Wiktionary / FreeDict) — szczegóły w <a href="#sources">Źródłach</a>
-        i pliku <a href="ATTRIBUTION.md">ATTRIBUTION.md</a>.
+        Copy the <code>.dic</code> files into the hidden <code>system/dictionaries</code> folder on PocketBook Verse (and similar devices).
+        Lexical content is <strong>CC BY-SA</strong> (Wiktionary / FreeDict) — see
+        <a href="#sources">Sources</a> and <a href="ATTRIBUTION.md">ATTRIBUTION.md</a>.
       </p>
       <div class="grid">
         <a class="dl" href="dictionaries/Niemiecko-Polski.dic">
-          <strong>Niemiecko-Polski</strong>
-          <div class="meta">~290k haseł · z formami odmiany · 5.8&nbsp;MB</div>
-          <span class="pill">Pobierz .dic</span>
+          <strong>German → Polish</strong>
+          <div class="meta">Niemiecko-Polski.dic · ~290k entries · with forms · 5.8&nbsp;MB</div>
+          <span class="pill">Download .dic</span>
         </a>
         <a class="dl" href="dictionaries/Polsko-Niemiecki.dic">
-          <strong>Polsko-Niemiecki</strong>
-          <div class="meta">~330k haseł · z formami odmiany · 6.4&nbsp;MB</div>
-          <span class="pill">Pobierz .dic</span>
+          <strong>Polish → German</strong>
+          <div class="meta">Polsko-Niemiecki.dic · ~330k entries · with forms · 6.4&nbsp;MB</div>
+          <span class="pill">Download .dic</span>
         </a>
         <a class="dl" href="dictionaries/Angielsko-Polski.dic">
-          <strong>Angielsko-Polski</strong>
-          <div class="meta">~232k haseł · z formami odmiany · 4.3&nbsp;MB</div>
-          <span class="pill">Pobierz .dic</span>
+          <strong>English → Polish</strong>
+          <div class="meta">Angielsko-Polski.dic · ~232k entries · with forms · 4.3&nbsp;MB</div>
+          <span class="pill">Download .dic</span>
         </a>
         <a class="dl" href="dictionaries/Polsko-Angielski.dic">
-          <strong>Polsko-Angielski</strong>
-          <div class="meta">~425k haseł · z formami odmiany · 6.9&nbsp;MB</div>
-          <span class="pill">Pobierz .dic</span>
+          <strong>Polish → English</strong>
+          <div class="meta">Polsko-Angielski.dic · ~425k entries · with forms · 6.9&nbsp;MB</div>
+          <span class="pill">Download .dic</span>
         </a>
       </div>
       <p class="section-lead" style="margin-top:1.5rem">
-        Sumy kontrolne: <a href="dictionaries/SHA256SUMS">SHA256SUMS</a>.
-        W słowniku wpisz <code>blumek</code> lub <code>credits</code>, żeby zobaczyć podpis pakietu.
+        Checksums: <a href="dictionaries/SHA256SUMS">SHA256SUMS</a>.
+        In the dictionary UI, search <code>blumek</code> or <code>credits</code> to see the pack signature.
       </p>
     </section>
 
     <section id="sources" class="prose">
-      <h2>Źródła i licencja CC</h2>
+      <h2>Sources &amp; CC license</h2>
       <p>
-        <strong>Treść leksykalna w plikach <code>.dic</code> jest objęta licencją
+        <strong>The lexical content inside the <code>.dic</code> files is licensed under
         <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a></strong>
-        (Attribution–ShareAlike), bo pochodzi z projektów open-source poniżej.
-        Możesz używać i udostępniać — ale <strong>musisz podać źródła</strong> i respektować ShareAlike.
+        (Attribution–ShareAlike), because it comes from the open projects below.
+        You may use and share them — but you <strong>must credit the sources</strong> and respect ShareAlike.
       </p>
       <p>
-        <strong>Kompilacja pod PocketBook</strong> (łączenie źródeł, formy odmiany, konwersja SDIC, branding)
-        — praca <strong>Blumek Labs</strong>.
-        Repo z plikami i kodem strony:
+        <strong>PocketBook packaging</strong> (merging sources, inflection forms, SDIC conversion, branding)
+        is work by <strong>Blumek Labs</strong>.
+        Repository:
         <a href="https://github.com/blumeklabs/blumeklabs.github.io">github.com/blumeklabs/blumeklabs.github.io</a>.
       </p>
       <ul>
         <li>
           <a href="https://www.wiktionary.org/">Wiktionary</a>
-          przez <a href="https://kaikki.org/">Kaikki.org</a>
+          via <a href="https://kaikki.org/">Kaikki.org</a>
           / <a href="https://github.com/tatuylonen/wiktextract">wiktextract</a>
-          — hasła, tłumaczenia, formy (EN/DE) · <strong>CC BY-SA</strong>
+          — headwords, translations, forms (EN/DE) · <strong>CC BY-SA</strong>
         </li>
         <li>
-          <a href="https://pl.wiktionary.org/">plwiktionary</a> (Kaikki)
-          — polskie glossy dla DE/EN oraz tłumaczenia PL · <strong>CC BY-SA</strong>
+          <a href="https://pl.wiktionary.org/">Polish Wiktionary</a> (Kaikki)
+          — Polish glosses for DE/EN entries and PL translations · <strong>CC BY-SA</strong>
         </li>
         <li>
           <a href="https://freedict.org/">FreeDict</a> + WikDict
-          — pary <code>deu-pol</code>, <code>pol-deu</code>, <code>eng-pol</code>, <code>pol-eng</code>
+          — pairs <code>deu-pol</code>, <code>pol-deu</code>, <code>eng-pol</code>, <code>pol-eng</code>
           · <strong>CC BY-SA</strong>
         </li>
       </ul>
       <p>
-        Pełna lista źródeł i warunków: <a href="ATTRIBUTION.md">ATTRIBUTION.md</a>.
-        To nie jest treść z komercyjnych słowników wydawniczych (PWN itd.).
+        Full source list: <a href="ATTRIBUTION.md">ATTRIBUTION.md</a>.
+        This is not commercial publisher content (PWN, etc.).
       </p>
     </section>
 
     <section id="install" class="prose">
-      <h2>Instalacja na PocketBook</h2>
-      <ol style="color:var(--mist); max-width:46rem; padding-left:1.2rem">
-        <li>Podłącz czytnik USB (PC Link).</li>
-        <li>Pokaż ukryte pliki systemowe i wejdź w <code>system/dictionaries</code>.</li>
-        <li>Skopiuj wybrane <code>.dic</code>.</li>
-        <li>Odłącz USB i wybierz słownik przy długim naciśnięciu słowa.</li>
+      <h2>Install on PocketBook</h2>
+      <ol>
+        <li>Connect the reader over USB (PC Link).</li>
+        <li>Show hidden system files and open <code>system/dictionaries</code>.</li>
+        <li>Copy the chosen <code>.dic</code> files.</li>
+        <li>Disconnect USB and select the dictionary on long-press lookup.</li>
       </ol>
     </section>
 
     <section id="support">
-      <h2>Wsparcie</h2>
+      <h2>Support</h2>
       <div class="donate">
-        <strong>Korzystasz i lubisz?</strong>
+        <strong>Finding this useful?</strong>
         <p>
-          Projekt jest darmowy i open. Jeśli Ci pomaga przy nauce / czytaniu —
-          kawusia albo mały donate bardzo motywuje do kolejnych par językowych.
+          The project is free and open. If it helps your reading or language learning,
+          a small donation is a great nudge toward more language pairs.
         </p>
-        <!-- Podmień href na swój link (Buy Me a Coffee / PayPal / Revolut) -->
         <a class="btn btn-primary" href="https://github.com/sponsors/blumeklabs">Donate / Sponsor</a>
       </div>
     </section>
@@ -375,7 +374,7 @@
     <footer>
       Made by Blumek Labs ·
       <a href="https://github.com/blumeklabs/blumeklabs.github.io" style="color:var(--accent)">GitHub repo</a>
-      · treść słowników: <a href="https://creativecommons.org/licenses/by-sa/4.0/" style="color:var(--accent)">CC BY-SA</a>
+      · dictionary content: <a href="https://creativecommons.org/licenses/by-sa/4.0/" style="color:var(--accent)">CC BY-SA</a>
       (Wiktionary / FreeDict) · <a href="ATTRIBUTION.md" style="color:var(--accent)">ATTRIBUTION.md</a>
     </footer>
   </main>

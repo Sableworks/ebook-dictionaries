@@ -1,47 +1,47 @@
 # Blumek Labs
 
-- **Strona (GitHub Pages):** https://blumeklabs.github.io/
-- **Repozytorium:** https://github.com/blumeklabs/blumeklabs.github.io
+- **GitHub Pages:** https://blumeklabs.github.io/
+- **Repository:** https://github.com/blumeklabs/blumeklabs.github.io
 
 ## PocketBook dictionaries
 
-Gotowe słowniki `.dic` (format SDIC) pod PocketBook Verse i pokrewne.
+Ready-to-use PocketBook SDIC `.dic` files (Verse and similar devices).
 
-| Plik | Kierunek | Orientacyjna wielkość |
-|------|----------|------------------------|
-| [`dictionaries/Niemiecko-Polski.dic`](dictionaries/Niemiecko-Polski.dic) | DE → PL | ~290k haseł |
-| [`dictionaries/Polsko-Niemiecki.dic`](dictionaries/Polsko-Niemiecki.dic) | PL → DE | ~330k haseł |
-| [`dictionaries/Angielsko-Polski.dic`](dictionaries/Angielsko-Polski.dic) | EN → PL | ~232k haseł |
-| [`dictionaries/Polsko-Angielski.dic`](dictionaries/Polsko-Angielski.dic) | PL → EN | ~425k haseł |
+| File | Direction | Approx. size |
+|------|-----------|--------------|
+| [`dictionaries/Niemiecko-Polski.dic`](dictionaries/Niemiecko-Polski.dic) | DE → PL | ~290k entries |
+| [`dictionaries/Polsko-Niemiecki.dic`](dictionaries/Polsko-Niemiecki.dic) | PL → DE | ~330k entries |
+| [`dictionaries/Angielsko-Polski.dic`](dictionaries/Angielsko-Polski.dic) | EN → PL | ~232k entries |
+| [`dictionaries/Polsko-Angielski.dic`](dictionaries/Polsko-Angielski.dic) | PL → EN | ~425k entries |
 
-Checksumy: [`dictionaries/SHA256SUMS`](dictionaries/SHA256SUMS).
+Checksums: [`dictionaries/SHA256SUMS`](dictionaries/SHA256SUMS).
 
-**Licencja treści haseł w `.dic`: [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)** — pełne źródła w [`ATTRIBUTION.md`](ATTRIBUTION.md).
+**Lexical content license: [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)** — full sources in [`ATTRIBUTION.md`](ATTRIBUTION.md).
 
-### Instalacja
+### Install
 
-1. Skopiuj `.dic` do `system/dictionaries` na urządzeniu (folder ukryty).
-2. Odłącz USB i wybierz słownik w czytniku.
+1. Copy `.dic` files into `system/dictionaries` on the device (hidden folder).
+2. Disconnect USB and select the dictionary in the reader.
 
-W słowniku wyszukaj `blumek` / `credits`, żeby zobaczyć podpis pakietu.
+Search `blumek` / `credits` inside the dictionary for the pack signature.
 
-## Źródła danych
+## Data sources
 
-**Treść leksykalna (CC BY-SA):**
+**Lexical content (CC BY-SA):**
 
 - [Wiktionary](https://www.wiktionary.org/) via [Kaikki.org](https://kaikki.org/) / [wiktextract](https://github.com/tatuylonen/wiktextract)
-- [plwiktionary](https://pl.wiktionary.org/) via Kaikki
+- [Polish Wiktionary](https://pl.wiktionary.org/) via Kaikki
 - [FreeDict](https://freedict.org/) + WikDict (`deu-pol`, `pol-deu`, `eng-pol`, `pol-eng`)
 
-**Kompilacja / packaging PocketBook** — Blumek Labs (pipeline, formy odmiany, SDIC, branding).
+**PocketBook packaging** — Blumek Labs (pipeline, inflection forms, SDIC, branding).
 
-To **nie** jest treść z komercyjnych słowników wydawniczych.
+This is **not** commercial publisher dictionary content.
 
-## Licencja
+## License
 
-- Treść słowników (`.dic`): **CC BY-SA** — zobacz [`ATTRIBUTION.md`](ATTRIBUTION.md)
-- Strona i packaging Blumek Labs: [`LICENSE`](LICENSE) (MIT + notice o danych CC)
+- Dictionary content (`.dic`): **CC BY-SA** — see [`ATTRIBUTION.md`](ATTRIBUTION.md)
+- Site & Blumek Labs packaging: [`LICENSE`](LICENSE) (MIT + CC data notice)
 
 ## Support
 
-[GitHub Sponsors](https://github.com/sponsors/blumeklabs) (albo inny link donate na stronie).
+[GitHub Sponsors](https://github.com/sponsors/blumeklabs) (or another donate link on the site).
