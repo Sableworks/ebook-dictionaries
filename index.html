@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Blumek Labs — Free offline e-reader dictionaries (.dic)</title>
-  <meta name="description" content="Free offline German–Polish and English–Polish dictionaries for e-readers (.dic). Built for long-press lookup while reading. Open data (CC BY-SA). Works on PocketBook and other .dic-compatible devices." />
-  <meta name="keywords" content="ebook dictionary, e-reader dictionary, .dic dictionary, German Polish dictionary, English Polish dictionary, offline dictionary, PocketBook dictionary, e-ink dictionary, bilingual dictionary, DE-PL, EN-PL" />
-  <meta property="og:title" content="Free offline e-reader dictionaries — Blumek Labs" />
-  <meta property="og:description" content="German↔Polish and English↔Polish .dic packs for ebook readers. Offline lookup with word forms. Free & open (CC BY-SA)." />
-  <meta property="og:url" content="https://blumeklabs.github.io/ebook-dictionaries/" />
+  <title>Sableworks — Free offline e-reader dictionaries (.dic)</title>
+  <meta name="description" content="Free offline German–Polish and English–Polish dictionaries for e-readers (.dic). Built for long-press lookup while reading. Lexical content CC BY-SA. Created by Mateusz Blumensztajn / Sableworks." />
+  <meta name="keywords" content="ebook dictionary, e-reader dictionary, .dic dictionary, German Polish dictionary, English Polish dictionary, offline dictionary, PocketBook dictionary, e-ink dictionary, bilingual dictionary, DE-PL, EN-PL, Sableworks" />
+  <meta property="og:title" content="Free offline e-reader dictionaries — Sableworks" />
+  <meta property="og:description" content="German↔Polish and English↔Polish .dic packs for ebook readers. Offline lookup with word forms. Lexical data CC BY-SA." />
+  <meta property="og:url" content="https://sableworks.github.io/ebook-dictionaries/" />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Free offline e-reader dictionaries — Blumek Labs" />
-  <meta name="twitter:description" content="German↔Polish and English↔Polish .dic packs for ebook readers. Free & open (CC BY-SA)." />
-  <link rel="canonical" href="https://blumeklabs.github.io/ebook-dictionaries/" />
+  <meta name="twitter:title" content="Free offline e-reader dictionaries — Sableworks" />
+  <meta name="twitter:description" content="German↔Polish and English↔Polish .dic packs for ebook readers. Lexical data CC BY-SA." />
+  <link rel="canonical" href="https://sableworks.github.io/ebook-dictionaries/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -22,7 +22,6 @@
       --ink: #12150f;
       --paper: #d7ddd2;
       --mist: #aeb8a8;
-      --panel: #1c2218;
       --accent: #6f9e72;
       --accent-2: #c4a35a;
       --glow: rgba(111, 158, 114, 0.18);
@@ -30,7 +29,6 @@
       --font-display: "Instrument Serif", Georgia, serif;
       --font-body: "Manrope", system-ui, sans-serif;
     }
-
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
@@ -44,7 +42,6 @@
       min-height: 100vh;
       line-height: 1.55;
     }
-
     body::before {
       content: "";
       position: fixed;
@@ -54,14 +51,12 @@
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
       z-index: 0;
     }
-
     .wrap {
       position: relative;
       z-index: 1;
       width: min(1080px, calc(100% - 2.5rem));
       margin: 0 auto;
     }
-
     .hero {
       min-height: 100vh;
       display: grid;
@@ -69,7 +64,6 @@
       padding: 4rem 0 3rem;
       gap: 1.25rem;
     }
-
     .brand {
       font-family: var(--font-display);
       font-size: clamp(3.4rem, 10vw, 6.4rem);
@@ -80,12 +74,15 @@
       transform: translateY(18px);
       animation: rise 0.9s ease forwards 0.1s;
     }
-
-    .brand em {
-      font-style: italic;
-      color: var(--accent);
+    .brand em { font-style: italic; color: var(--accent); }
+    .byline {
+      margin: 0;
+      color: var(--mist);
+      font-size: 0.95rem;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: rise 0.9s ease forwards 0.2s;
     }
-
     .lede {
       max-width: 38rem;
       font-size: clamp(1.05rem, 2.2vw, 1.25rem);
@@ -95,7 +92,6 @@
       transform: translateY(18px);
       animation: rise 0.9s ease forwards 0.28s;
     }
-
     .lede code {
       font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
       font-size: 0.9em;
@@ -103,7 +99,6 @@
       padding: 0.1em 0.35em;
       border-radius: 4px;
     }
-
     .cta-row {
       display: flex;
       flex-wrap: wrap;
@@ -113,7 +108,6 @@
       transform: translateY(18px);
       animation: rise 0.9s ease forwards 0.45s;
     }
-
     .btn {
       appearance: none;
       border: 0;
@@ -125,7 +119,7 @@
       border-radius: 999px;
       font-weight: 600;
       font-size: 0.95rem;
-      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+      transition: transform 0.2s ease, background 0.2s ease;
     }
     .btn:hover { transform: translateY(-2px); }
     .btn-primary { background: var(--accent); color: #0d120c; }
@@ -134,18 +128,13 @@
       color: var(--paper);
       box-shadow: inset 0 0 0 1px rgba(215, 221, 210, 0.28);
     }
-
     .ink-plane {
       margin-top: 2.5rem;
       height: clamp(160px, 28vh, 280px);
       border-radius: 18px;
       background:
         linear-gradient(120deg, transparent 0%, rgba(215,221,210,0.05) 40%, transparent 70%),
-        repeating-linear-gradient(
-          0deg,
-          rgba(215, 221, 210, 0.045) 0 1px,
-          transparent 1px 28px
-        ),
+        repeating-linear-gradient(0deg, rgba(215, 221, 210, 0.045) 0 1px, transparent 1px 28px),
         linear-gradient(145deg, #232a1f, #141912 60%, #1a2217);
       box-shadow: 0 30px 80px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(215,221,210,0.08);
       position: relative;
@@ -154,12 +143,12 @@
       animation: rise 1s ease forwards 0.55s;
     }
     .ink-plane::after {
-      content: "Offline · .dic · DE↔PL · EN↔PL";
+      content: "Offline · .dic · DE↔PL · EN↔PL · CC BY-SA";
       position: absolute;
       left: 1.4rem;
       bottom: 1.2rem;
       font-family: var(--font-display);
-      font-size: clamp(1.25rem, 3.6vw, 2rem);
+      font-size: clamp(1.1rem, 3.2vw, 1.85rem);
       color: rgba(215, 221, 210, 0.72);
       letter-spacing: 0.04em;
     }
@@ -170,12 +159,10 @@
       background: linear-gradient(90deg, transparent, var(--glow), transparent);
       animation: sweep 4.5s ease-in-out infinite;
     }
-
     section {
       padding: 4.5rem 0;
       border-top: 1px solid rgba(215, 221, 210, 0.1);
     }
-
     h2 {
       font-family: var(--font-display);
       font-size: clamp(2rem, 5vw, 3rem);
@@ -187,7 +174,6 @@
       max-width: 42rem;
       margin: 0 0 2rem;
     }
-
     .grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -197,7 +183,6 @@
       .grid { grid-template-columns: 1fr; }
       .wrap { width: min(1080px, calc(100% - 1.5rem)); }
     }
-
     .dl {
       display: block;
       text-decoration: none;
@@ -220,15 +205,8 @@
       background: rgba(34, 42, 30, 0.9);
       transform: translateY(-3px);
     }
-    .dl strong {
-      display: block;
-      font-size: 1.15rem;
-      margin-bottom: 0.25rem;
-    }
-    .meta {
-      color: var(--mist);
-      font-size: 0.9rem;
-    }
+    .dl strong { display: block; font-size: 1.15rem; margin-bottom: 0.25rem; }
+    .meta { color: var(--mist); font-size: 0.9rem; }
     .pill {
       display: inline-block;
       margin-top: 0.85rem;
@@ -238,7 +216,6 @@
       text-transform: uppercase;
       color: var(--accent-2);
     }
-
     .prose p { color: var(--mist); max-width: 46rem; }
     .prose a { color: var(--accent); }
     .prose ul, .prose ol {
@@ -253,26 +230,29 @@
       padding: 0.1em 0.35em;
       border-radius: 4px;
     }
-
+    .license-callout {
+      border: 1px solid rgba(196, 163, 90, 0.35);
+      background: rgba(196, 163, 90, 0.08);
+      border-radius: 14px;
+      padding: 1rem 1.15rem;
+      max-width: 46rem;
+      color: var(--mist);
+      margin: 0 0 1.5rem;
+    }
     .donate {
-      background:
-        linear-gradient(135deg, rgba(111,158,114,0.14), rgba(196,163,90,0.08));
+      background: linear-gradient(135deg, rgba(111,158,114,0.14), rgba(196,163,90,0.08));
       border: 1px solid rgba(215,221,210,0.12);
       border-radius: 18px;
       padding: 1.5rem 1.6rem;
     }
     .donate p { margin: 0.4rem 0 1rem; color: var(--mist); }
-
     footer {
       padding: 2.5rem 0 3.5rem;
       color: var(--mist);
       font-size: 0.9rem;
       border-top: 1px solid rgba(215, 221, 210, 0.1);
     }
-
-    @keyframes rise {
-      to { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes rise { to { opacity: 1; transform: translateY(0); } }
     @keyframes sweep {
       0%, 100% { transform: translateX(-30%); opacity: 0.15; }
       50% { transform: translateX(280%); opacity: 0.55; }
@@ -282,15 +262,16 @@
 <body>
   <main class="wrap">
     <header class="hero">
-      <h1 class="brand">Blumek<br /><em>Labs</em></h1>
+      <h1 class="brand">Sable<em>works</em></h1>
+      <p class="byline">Created by Mateusz Blumensztajn</p>
       <p class="lede">
         Free offline bilingual dictionaries for e-readers — German↔Polish and English↔Polish in <code>.dic</code> format,
         built for looking up words while you read (including inflected forms).
       </p>
       <div class="cta-row">
         <a class="btn btn-primary" href="#download">Download free dictionaries</a>
-        <a class="btn btn-ghost" href="#why">Why these packs</a>
-        <a class="btn btn-ghost" href="https://github.com/blumeklabs/ebook-dictionaries">GitHub repo</a>
+        <a class="btn btn-ghost" href="#sources">Sources &amp; CC BY-SA</a>
+        <a class="btn btn-ghost" href="https://github.com/Sableworks/ebook-dictionaries">GitHub repo</a>
       </div>
       <div class="ink-plane" aria-hidden="true"><span class="scan"></span></div>
     </header>
@@ -306,16 +287,21 @@
         <li><strong>German ↔ Polish</strong> and <strong>English ↔ Polish</strong> — both directions</li>
         <li><strong>Offline</strong> — no Wi‑Fi, no account, no cloud</li>
         <li><strong><code>.dic</code> format</strong> used by many ebook / e-ink readers</li>
-        <li><strong>Open data</strong> — lexical content under CC BY-SA (Wiktionary / FreeDict)</li>
+        <li><strong>Open lexical data</strong> under <strong>CC BY-SA</strong> (Wiktionary / FreeDict)</li>
         <li>Tested on <strong>PocketBook</strong> (e.g. Verse); other devices that accept the same <code>.dic</code> packs can use them too</li>
       </ul>
     </section>
 
     <section id="download">
       <h2>Download</h2>
+      <div class="license-callout">
+        <strong>License note:</strong> the word content inside these <code>.dic</code> files is
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a>
+        (from Wiktionary / FreeDict and related open sources). Packaging by Sableworks.
+        See <a href="ATTRIBUTION.md">ATTRIBUTION.md</a>.
+      </div>
       <p class="section-lead">
-        Grab the language pair you need. Lexical content is <strong>CC BY-SA</strong> —
-        see <a href="#sources">Sources</a> and <a href="ATTRIBUTION.md">ATTRIBUTION.md</a>.
+        Grab the language pair you need.
       </p>
       <div class="grid">
         <a class="dl" href="dictionaries/Niemiecko-Polski.dic">
@@ -341,53 +327,45 @@
       </div>
       <p class="section-lead" style="margin-top:1.5rem">
         Checksums: <a href="dictionaries/SHA256SUMS">SHA256SUMS</a>.
-        In the dictionary UI, search <code>blumek</code> or <code>credits</code> to see the pack signature.
+        In the dictionary UI, search <code>sable</code>, <code>credits</code>, or <code>license</code> for the pack signature.
       </p>
     </section>
 
     <section id="sources" class="prose">
-      <h2>Sources &amp; CC license</h2>
+      <h2>Sources &amp; CC BY-SA</h2>
       <p>
-        <strong>The lexical content inside the <code>.dic</code> files is licensed under
+        <strong>Lexical content in the <code>.dic</code> files is
         <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a></strong>
-        (Attribution–ShareAlike), because it comes from the open projects below.
-        You may use and share them — but you <strong>must credit the sources</strong> and respect ShareAlike.
+        (Attribution–ShareAlike). You may use and share them — credit the sources below and respect ShareAlike.
       </p>
       <p>
-        <strong>Compilation &amp; packaging for e-readers</strong>
-        (merging sources, inflection forms, <code>.dic</code> / SDIC build, branding)
-        is work by <strong>Blumek Labs</strong>.
+        <strong>Compilation &amp; packaging</strong> by <strong>Sableworks</strong>
+        (created by Mateusz Blumensztajn).
         Repository:
-        <a href="https://github.com/blumeklabs/ebook-dictionaries">github.com/blumeklabs/ebook-dictionaries</a>.
+        <a href="https://github.com/Sableworks/ebook-dictionaries">github.com/Sableworks/ebook-dictionaries</a>.
       </p>
       <ul>
         <li>
           <a href="https://www.wiktionary.org/">Wiktionary</a>
           via <a href="https://kaikki.org/">Kaikki.org</a>
           / <a href="https://github.com/tatuylonen/wiktextract">wiktextract</a>
-          — headwords, translations, forms (EN/DE) · <strong>CC BY-SA</strong>
+          — <strong>CC BY-SA</strong>
         </li>
         <li>
-          <a href="https://pl.wiktionary.org/">Polish Wiktionary</a> (Kaikki)
-          — Polish glosses for DE/EN entries and PL translations · <strong>CC BY-SA</strong>
+          <a href="https://pl.wiktionary.org/">Polish Wiktionary</a> (Kaikki) — <strong>CC BY-SA</strong>
         </li>
         <li>
           <a href="https://freedict.org/">FreeDict</a> + WikDict
-          — pairs <code>deu-pol</code>, <code>pol-deu</code>, <code>eng-pol</code>, <code>pol-eng</code>
-          · <strong>CC BY-SA</strong>
+          (<code>deu-pol</code>, <code>pol-deu</code>, <code>eng-pol</code>, <code>pol-eng</code>)
+          — <strong>CC BY-SA</strong>
         </li>
       </ul>
-      <p>
-        Full source list: <a href="ATTRIBUTION.md">ATTRIBUTION.md</a>.
-        This is not commercial publisher content (PWN, etc.).
-      </p>
+      <p>Full details: <a href="ATTRIBUTION.md">ATTRIBUTION.md</a>.</p>
     </section>
 
     <section id="install" class="prose">
       <h2>Install on your e-reader</h2>
-      <p>
-        Exact folder names vary by brand. On <strong>PocketBook</strong> (Verse and similar):
-      </p>
+      <p>Exact folder names vary by brand. On <strong>PocketBook</strong> (Verse and similar):</p>
       <ol>
         <li>Connect over USB (PC Link / mass storage).</li>
         <li>Show hidden system files and open <code>system/dictionaries</code>.</li>
@@ -395,9 +373,8 @@
         <li>Disconnect USB, then pick the dictionary on long-press word lookup.</li>
       </ol>
       <p>
-        On other e-readers that support the same <code>.dic</code> dictionary packs, place the files
-        in that device’s dictionary folder (check your manual). If a device uses a different dictionary format,
-        these files will not convert automatically.
+        On other e-readers that support the same <code>.dic</code> packs, use that device’s dictionary folder.
+        Different formats will not work without conversion.
       </p>
     </section>
 
@@ -416,16 +393,17 @@
         </script>
         <p style="margin-top:1rem;margin-bottom:0;font-size:0.9rem">
           Or open directly:
-          <a href="https://ko-fi.com/C3Q525T6Y5">ko-fi.com/C3Q525T6Y5</a>
+          <a href="https://ko-fi.com/sableworks">ko-fi.com/sableworks</a>
         </p>
       </div>
     </section>
 
     <footer>
-      Made by Blumek Labs ·
-      <a href="https://github.com/blumeklabs/ebook-dictionaries" style="color:var(--accent)">GitHub repo</a>
-      · dictionary content: <a href="https://creativecommons.org/licenses/by-sa/4.0/" style="color:var(--accent)">CC BY-SA</a>
-      (Wiktionary / FreeDict) · <a href="ATTRIBUTION.md" style="color:var(--accent)">ATTRIBUTION.md</a>
+      Sableworks · created by Mateusz Blumensztajn ·
+      <a href="https://github.com/Sableworks/ebook-dictionaries" style="color:var(--accent)">GitHub</a>
+      · lexical content
+      <a href="https://creativecommons.org/licenses/by-sa/4.0/" style="color:var(--accent)">CC BY-SA</a>
+      · <a href="ATTRIBUTION.md" style="color:var(--accent)">ATTRIBUTION.md</a>
     </footer>
   </main>
 </body>

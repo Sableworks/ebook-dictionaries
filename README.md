@@ -1,11 +1,16 @@
-# Blumek Labs — free offline e-reader dictionaries
+# Sableworks — free offline e-reader dictionaries
 
-- **Site:** https://blumeklabs.github.io/ebook-dictionaries/
-- **Repository:** https://github.com/blumeklabs/ebook-dictionaries
+- **Site:** https://sableworks.github.io/ebook-dictionaries/
+- **Repository:** https://github.com/Sableworks/ebook-dictionaries
+- **Support:** https://ko-fi.com/sableworks
+
+Created by **Mateusz Blumensztajn** / **Sableworks**.
 
 Free **German↔Polish** and **English↔Polish** bilingual dictionaries in **`.dic`** format for ebook / e-ink readers — offline long-press lookup while reading, with common word forms included.
 
-Built and tested on **PocketBook** (e.g. Verse). Other devices that accept the same `.dic` dictionary packs can use them too.
+**Lexical content is [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)** (Wiktionary / FreeDict and related open sources). See [`ATTRIBUTION.md`](ATTRIBUTION.md).
+
+Built and tested on **PocketBook** (e.g. Verse). Other devices that accept the same `.dic` packs can use them too.
 
 ## Downloads
 
@@ -18,21 +23,12 @@ Built and tested on **PocketBook** (e.g. Verse). Other devices that accept the s
 
 Checksums: [`dictionaries/SHA256SUMS`](dictionaries/SHA256SUMS).
 
-**Lexical content license: [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)** — full sources in [`ATTRIBUTION.md`](ATTRIBUTION.md).
-
 ### Install (PocketBook example)
 
 1. Copy `.dic` files into `system/dictionaries` (hidden folder).
 2. Disconnect USB and select the dictionary in the reader.
 
-On other e-readers, use that device’s dictionary folder if it supports the same `.dic` packs.
-
-Search `blumek` / `credits` inside a dictionary for the pack signature.
-
-## Why these packs
-
-Stock dictionaries on many readers miss past tenses, plurals, and other forms from real books.
-These packs merge open lexical data and add inflection forms so lookups hit more often while you read.
+Search `sable`, `credits`, or `license` inside a dictionary for the pack signature.
 
 ## Data sources
 
@@ -42,15 +38,13 @@ These packs merge open lexical data and add inflection forms so lookups hit more
 - [Polish Wiktionary](https://pl.wiktionary.org/) via Kaikki
 - [FreeDict](https://freedict.org/) + WikDict (`deu-pol`, `pol-deu`, `eng-pol`, `pol-eng`)
 
-**Compilation & e-reader packaging** — Blumek Labs (pipeline, forms, `.dic` / SDIC build, branding).
-
-This is **not** commercial publisher dictionary content.
+**Compilation & e-reader packaging** — Sableworks (Mateusz Blumensztajn).
 
 ## License
 
-- Dictionary content (`.dic`): **CC BY-SA** — see [`ATTRIBUTION.md`](ATTRIBUTION.md)
-- Site & Blumek Labs packaging: [`LICENSE`](LICENSE) (MIT + CC data notice)
+- Dictionary content (`.dic`): **CC BY-SA** — [`ATTRIBUTION.md`](ATTRIBUTION.md)
+- Site & packaging code: [`LICENSE`](LICENSE) (MIT + CC data notice)
 
 ## Support
 
-[Support me on Ko-fi](https://ko-fi.com/C3Q525T6Y5)
+[ko-fi.com/sableworks](https://ko-fi.com/sableworks)

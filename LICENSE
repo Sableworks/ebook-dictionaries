@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2026 Blumek Labs
+Copyright (c) 2026 Sableworks / Mateusz Blumensztajn
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,7 +24,7 @@ SOFTWARE.
 
 NOTICE — dictionary lexical data
 
-The packaged PocketBook `.dic` files contain lexical material derived from
+The packaged e-reader `.dic` files contain lexical material derived from
 third-party open projects (notably Wiktionary / Kaikki.org and FreeDict),
 which are typically licensed under Creative Commons Attribution-ShareAlike
 (CC BY-SA) or similar terms. That material is NOT relicensed under MIT.
@@ -33,4 +33,6 @@ When you redistribute the `.dic` files or substantial extracts of their
 lexical content, you must comply with the upstream licenses (attribution and
 ShareAlike where applicable), and you should credit:
 
-  Compiled & packaged by Blumek Labs (https://blumeklabs.github.io/ebook-dictionaries/)
+  Compiled & packaged by Sableworks (Mateusz Blumensztajn)
+  https://sableworks.github.io/ebook-dictionaries/
+  https://github.com/Sableworks/ebook-dictionaries
