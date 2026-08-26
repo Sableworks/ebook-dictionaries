@@ -53,4 +53,4 @@ This is **not** commercial publisher dictionary content.
 
 ## Support
 
-[GitHub Sponsors](https://github.com/sponsors/blumeklabs) (or another donate link on the site).
+[Support me on Ko-fi](https://ko-fi.com/C3Q525T6Y5)
