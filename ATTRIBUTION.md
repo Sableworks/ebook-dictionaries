@@ -11,7 +11,7 @@ When redistributing the `.dic` files or substantial extracts of their entries:
 1. Credit the sources (Wiktionary / Kaikki / FreeDict — as listed below).
 2. Keep ShareAlike terms where required by upstream CC BY-SA.
 3. Credit that the pack was compiled by **Blumek Labs**  
-   ([site](https://blumeklabs.github.io/) · [repo](https://github.com/blumeklabs/blumeklabs.github.io)).
+   ([site](https://blumeklabs.github.io/ebook-dictionaries/) · [repo](https://github.com/blumeklabs/ebook-dictionaries)).
 
 Full CC BY-SA 4.0 text: https://creativecommons.org/licenses/by-sa/4.0/
 
@@ -43,4 +43,4 @@ Site and packaging code: see [`LICENSE`](LICENSE) (MIT + notice about CC data).
 
 Site code, `.dic` files, checksums, and this attribution:
 
-**https://github.com/blumeklabs/blumeklabs.github.io**
+**https://github.com/blumeklabs/ebook-dictionaries**

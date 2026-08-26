@@ -1,7 +1,7 @@
 # Blumek Labs — free offline e-reader dictionaries
 
-- **Site:** https://blumeklabs.github.io/
-- **Repository:** https://github.com/blumeklabs/blumeklabs.github.io
+- **Site:** https://blumeklabs.github.io/ebook-dictionaries/
+- **Repository:** https://github.com/blumeklabs/ebook-dictionaries
 
 Free **German↔Polish** and **English↔Polish** bilingual dictionaries in **`.dic`** format for ebook / e-ink readers — offline long-press lookup while reading, with common word forms included.
 
