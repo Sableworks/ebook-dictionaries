@@ -1,6 +1,6 @@
-# Attribution — PocketBook dictionaries (Blumek Labs)
+# Attribution — e-reader dictionaries (Blumek Labs)
 
-Files in [`dictionaries/`](dictionaries/) (PocketBook SDIC `.dic` format) contain **lexical content** from open projects.
+Files in [`dictionaries/`](dictionaries/) (`.dic` / PocketBook SDIC format for ebook readers) contain **lexical content** from open projects.
 
 ## Dictionary content license
 
@@ -32,8 +32,8 @@ FreeDict releases used in the build include:
 ## What is Blumek Labs work (not the CC word data)
 
 - compile / merge pipeline,
-- inflection forms for better on-device lookup,
-- conversion to native PocketBook `.dic` (SDIC),
+- inflection forms for better on-device lookup while reading,
+- conversion to e-reader `.dic` (SDIC) packs,
 - branding / credits in the pack,
 - this portfolio site.
 

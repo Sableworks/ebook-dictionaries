@@ -3,8 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Blumek Labs — PocketBook dictionaries</title>
-  <meta name="description" content="Open PocketBook dictionaries (DE↔PL, EN↔PL) compiled by Blumek Labs from Wiktionary and FreeDict (CC BY-SA)." />
+  <title>Blumek Labs — Free offline e-reader dictionaries (.dic)</title>
+  <meta name="description" content="Free offline German–Polish and English–Polish dictionaries for e-readers (.dic). Built for long-press lookup while reading. Open data (CC BY-SA). Works on PocketBook and other .dic-compatible devices." />
+  <meta name="keywords" content="ebook dictionary, e-reader dictionary, .dic dictionary, German Polish dictionary, English Polish dictionary, offline dictionary, PocketBook dictionary, e-ink dictionary, bilingual dictionary, DE-PL, EN-PL" />
+  <meta property="og:title" content="Free offline e-reader dictionaries — Blumek Labs" />
+  <meta property="og:description" content="German↔Polish and English↔Polish .dic packs for ebook readers. Offline lookup with word forms. Free & open (CC BY-SA)." />
+  <meta property="og:url" content="https://blumeklabs.github.io/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Free offline e-reader dictionaries — Blumek Labs" />
+  <meta name="twitter:description" content="German↔Polish and English↔Polish .dic packs for ebook readers. Free & open (CC BY-SA)." />
+  <link rel="canonical" href="https://blumeklabs.github.io/" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -78,13 +87,21 @@
     }
 
     .lede {
-      max-width: 36rem;
+      max-width: 38rem;
       font-size: clamp(1.05rem, 2.2vw, 1.25rem);
       color: var(--mist);
       margin: 0.35rem 0 0;
       opacity: 0;
       transform: translateY(18px);
       animation: rise 0.9s ease forwards 0.28s;
+    }
+
+    .lede code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.9em;
+      background: rgba(215,221,210,0.08);
+      padding: 0.1em 0.35em;
+      border-radius: 4px;
     }
 
     .cta-row {
@@ -137,12 +154,12 @@
       animation: rise 1s ease forwards 0.55s;
     }
     .ink-plane::after {
-      content: "DE ↔ PL   ·   EN ↔ PL";
+      content: "Offline · .dic · DE↔PL · EN↔PL";
       position: absolute;
       left: 1.4rem;
       bottom: 1.2rem;
       font-family: var(--font-display);
-      font-size: clamp(1.4rem, 4vw, 2.2rem);
+      font-size: clamp(1.25rem, 3.6vw, 2rem);
       color: rgba(215, 221, 210, 0.72);
       letter-spacing: 0.04em;
     }
@@ -267,22 +284,38 @@
     <header class="hero">
       <h1 class="brand">Blumek<br /><em>Labs</em></h1>
       <p class="lede">
-        Open PocketBook dictionaries (DE↔PL, EN↔PL) — built for long-press lookup while reading, with inflected word forms.
+        Free offline bilingual dictionaries for e-readers — German↔Polish and English↔Polish in <code>.dic</code> format,
+        built for looking up words while you read (including inflected forms).
       </p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="#download">Download dictionaries</a>
-        <a class="btn btn-ghost" href="#sources">Sources &amp; CC BY-SA</a>
+        <a class="btn btn-primary" href="#download">Download free dictionaries</a>
+        <a class="btn btn-ghost" href="#why">Why these packs</a>
         <a class="btn btn-ghost" href="https://github.com/blumeklabs/blumeklabs.github.io">GitHub repo</a>
       </div>
       <div class="ink-plane" aria-hidden="true"><span class="scan"></span></div>
     </header>
 
+    <section id="why" class="prose">
+      <h2>Made for reading, not for desk study</h2>
+      <p>
+        Most stock e-reader dictionaries are tiny — tap a past tense or plural and you get nothing.
+        These packs are compiled for <strong>real book text</strong>: lemmas plus common word forms,
+        so long-press lookup hits more often when you are deep in a novel.
+      </p>
+      <ul>
+        <li><strong>German ↔ Polish</strong> and <strong>English ↔ Polish</strong> — both directions</li>
+        <li><strong>Offline</strong> — no Wi‑Fi, no account, no cloud</li>
+        <li><strong><code>.dic</code> format</strong> used by many ebook / e-ink readers</li>
+        <li><strong>Open data</strong> — lexical content under CC BY-SA (Wiktionary / FreeDict)</li>
+        <li>Tested on <strong>PocketBook</strong> (e.g. Verse); other devices that accept the same <code>.dic</code> packs can use them too</li>
+      </ul>
+    </section>
+
     <section id="download">
-      <h2>Dictionaries</h2>
+      <h2>Download</h2>
       <p class="section-lead">
-        Copy the <code>.dic</code> files into the hidden <code>system/dictionaries</code> folder on PocketBook Verse (and similar devices).
-        Lexical content is <strong>CC BY-SA</strong> (Wiktionary / FreeDict) — see
-        <a href="#sources">Sources</a> and <a href="ATTRIBUTION.md">ATTRIBUTION.md</a>.
+        Grab the language pair you need. Lexical content is <strong>CC BY-SA</strong> —
+        see <a href="#sources">Sources</a> and <a href="ATTRIBUTION.md">ATTRIBUTION.md</a>.
       </p>
       <div class="grid">
         <a class="dl" href="dictionaries/Niemiecko-Polski.dic">
@@ -321,7 +354,8 @@
         You may use and share them — but you <strong>must credit the sources</strong> and respect ShareAlike.
       </p>
       <p>
-        <strong>PocketBook packaging</strong> (merging sources, inflection forms, SDIC conversion, branding)
+        <strong>Compilation &amp; packaging for e-readers</strong>
+        (merging sources, inflection forms, <code>.dic</code> / SDIC build, branding)
         is work by <strong>Blumek Labs</strong>.
         Repository:
         <a href="https://github.com/blumeklabs/blumeklabs.github.io">github.com/blumeklabs/blumeklabs.github.io</a>.
@@ -350,13 +384,21 @@
     </section>
 
     <section id="install" class="prose">
-      <h2>Install on PocketBook</h2>
+      <h2>Install on your e-reader</h2>
+      <p>
+        Exact folder names vary by brand. On <strong>PocketBook</strong> (Verse and similar):
+      </p>
       <ol>
-        <li>Connect the reader over USB (PC Link).</li>
+        <li>Connect over USB (PC Link / mass storage).</li>
         <li>Show hidden system files and open <code>system/dictionaries</code>.</li>
-        <li>Copy the chosen <code>.dic</code> files.</li>
-        <li>Disconnect USB and select the dictionary on long-press lookup.</li>
+        <li>Copy the chosen <code>.dic</code> files there.</li>
+        <li>Disconnect USB, then pick the dictionary on long-press word lookup.</li>
       </ol>
+      <p>
+        On other e-readers that support the same <code>.dic</code> dictionary packs, place the files
+        in that device’s dictionary folder (check your manual). If a device uses a different dictionary format,
+        these files will not convert automatically.
+      </p>
     </section>
 
     <section id="support">
