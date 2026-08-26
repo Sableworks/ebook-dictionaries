@@ -271,7 +271,8 @@
       </p>
       <div class="cta-row">
         <a class="btn btn-primary" href="#download">Pobierz słowniki</a>
-        <a class="btn btn-ghost" href="#sources">Źródła danych</a>
+        <a class="btn btn-ghost" href="#sources">Źródła &amp; CC BY-SA</a>
+        <a class="btn btn-ghost" href="https://github.com/blumeklabs/blumeklabs.github.io">GitHub repo</a>
       </div>
       <div class="ink-plane" aria-hidden="true"><span class="scan"></span></div>
     </header>
@@ -280,6 +281,8 @@
       <h2>Słowniki</h2>
       <p class="section-lead">
         Wrzuć pliki <code>.dic</code> do ukrytego folderu <code>system/dictionaries</code> na PocketBook Verse (i podobnych).
+        Treść haseł: <strong>CC BY-SA</strong> (Wiktionary / FreeDict) — szczegóły w <a href="#sources">Źródłach</a>
+        i pliku <a href="ATTRIBUTION.md">ATTRIBUTION.md</a>.
       </p>
       <div class="grid">
         <a class="dl" href="dictionaries/Niemiecko-Polski.dic">
@@ -310,24 +313,39 @@
     </section>
 
     <section id="sources" class="prose">
-      <h2>Źródła i licencja</h2>
+      <h2>Źródła i licencja CC</h2>
       <p>
-        Te pliki to <strong>kompilacja i pakiet</strong> pod PocketBook od <strong>Blumek Labs</strong>.
-        Sama treść leksykalna pochodzi z otwartych źródeł — korzystaj śmiało, ale zachowaj atrybucję upstream.
+        <strong>Treść leksykalna w plikach <code>.dic</code> jest objęta licencją
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a></strong>
+        (Attribution–ShareAlike), bo pochodzi z projektów open-source poniżej.
+        Możesz używać i udostępniać — ale <strong>musisz podać źródła</strong> i respektować ShareAlike.
+      </p>
+      <p>
+        <strong>Kompilacja pod PocketBook</strong> (łączenie źródeł, formy odmiany, konwersja SDIC, branding)
+        — praca <strong>Blumek Labs</strong>.
+        Repo z plikami i kodem strony:
+        <a href="https://github.com/blumeklabs/blumeklabs.github.io">github.com/blumeklabs/blumeklabs.github.io</a>.
       </p>
       <ul>
-        <li><a href="https://www.wiktionary.org/">Wiktionary</a> / <a href="https://kaikki.org/">Kaikki.org</a> (ekstrakcja wiktextract) — głównie <strong>CC BY-SA</strong></li>
-        <li><a href="https://freedict.org/">FreeDict</a> + WikDict (pary DE↔PL, EN↔PL) — <strong>CC BY-SA</strong> / dokumentacja FreeDict</li>
-        <li>Polskie Wikisłownik (plwiktionary via Kaikki) — glossy PL dla haseł DE/EN</li>
+        <li>
+          <a href="https://www.wiktionary.org/">Wiktionary</a>
+          przez <a href="https://kaikki.org/">Kaikki.org</a>
+          / <a href="https://github.com/tatuylonen/wiktextract">wiktextract</a>
+          — hasła, tłumaczenia, formy (EN/DE) · <strong>CC BY-SA</strong>
+        </li>
+        <li>
+          <a href="https://pl.wiktionary.org/">plwiktionary</a> (Kaikki)
+          — polskie glossy dla DE/EN oraz tłumaczenia PL · <strong>CC BY-SA</strong>
+        </li>
+        <li>
+          <a href="https://freedict.org/">FreeDict</a> + WikDict
+          — pary <code>deu-pol</code>, <code>pol-deu</code>, <code>eng-pol</code>, <code>pol-eng</code>
+          · <strong>CC BY-SA</strong>
+        </li>
       </ul>
       <p>
-        Pipeline (łączenie, formy odmiany, konwersja do formatu SDIC <code>.dic</code>, branding) —
-        praca Blumek Labs. Przy redystrybucji prosimy o wzmiankę
-        „compiled &amp; packaged by Blumek Labs” oraz zachowanie wymagań CC BY-SA źródeł.
-      </p>
-      <p>
-        To nie jest komercyjny słownik wydawniczy (PWN itd.). Jakość jest „bardzo dobra do czytania”,
-        nie „idealna leksykograficznie”.
+        Pełna lista źródeł i warunków: <a href="ATTRIBUTION.md">ATTRIBUTION.md</a>.
+        To nie jest treść z komercyjnych słowników wydawniczych (PWN itd.).
       </p>
     </section>
 
@@ -356,8 +374,9 @@
 
     <footer>
       Made by Blumek Labs ·
-      <a href="https://github.com/blumeklabs/blumeklabs.github.io" style="color:var(--accent)">kod strony</a>
-      · dane leksykalne: Wiktionary / FreeDict (CC BY-SA)
+      <a href="https://github.com/blumeklabs/blumeklabs.github.io" style="color:var(--accent)">GitHub repo</a>
+      · treść słowników: <a href="https://creativecommons.org/licenses/by-sa/4.0/" style="color:var(--accent)">CC BY-SA</a>
+      (Wiktionary / FreeDict) · <a href="ATTRIBUTION.md" style="color:var(--accent)">ATTRIBUTION.md</a>
     </footer>
   </main>
 </body>
