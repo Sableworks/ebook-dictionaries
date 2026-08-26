@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blumek Labs — PocketBook dictionaries</title>
+  <meta name="description" content="Open PocketBook dictionaries (DE↔PL, EN↔PL) compiled by Blumek Labs from Wiktionary and FreeDict." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #12150f;
+      --paper: #d7ddd2;
+      --mist: #aeb8a8;
+      --panel: #1c2218;
+      --accent: #6f9e72;
+      --accent-2: #c4a35a;
+      --glow: rgba(111, 158, 114, 0.18);
+      --radius: 14px;
+      --font-display: "Instrument Serif", Georgia, serif;
+      --font-body: "Manrope", system-ui, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--paper);
+      font-family: var(--font-body);
+      background:
+        radial-gradient(1200px 700px at 10% -10%, rgba(111, 158, 114, 0.16), transparent 55%),
+        radial-gradient(900px 600px at 100% 0%, rgba(196, 163, 90, 0.10), transparent 50%),
+        linear-gradient(165deg, #0e120c 0%, #171c14 45%, #10140e 100%);
+      min-height: 100vh;
+      line-height: 1.55;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.07;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      z-index: 0;
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      width: min(1080px, calc(100% - 2.5rem));
+      margin: 0 auto;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      align-content: center;
+      padding: 4rem 0 3rem;
+      gap: 1.25rem;
+    }
+
+    .brand {
+      font-family: var(--font-display);
+      font-size: clamp(3.4rem, 10vw, 6.4rem);
+      line-height: 0.92;
+      letter-spacing: -0.02em;
+      margin: 0;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: rise 0.9s ease forwards 0.1s;
+    }
+
+    .brand em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .lede {
+      max-width: 34rem;
+      font-size: clamp(1.05rem, 2.2vw, 1.25rem);
+      color: var(--mist);
+      margin: 0.35rem 0 0;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: rise 0.9s ease forwards 0.28s;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      margin-top: 1.6rem;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: rise 0.9s ease forwards 0.45s;
+    }
+
+    .btn {
+      appearance: none;
+      border: 0;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.2rem;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--accent); color: #0d120c; }
+    .btn-ghost {
+      background: transparent;
+      color: var(--paper);
+      box-shadow: inset 0 0 0 1px rgba(215, 221, 210, 0.28);
+    }
+
+    .ink-plane {
+      margin-top: 2.5rem;
+      height: clamp(160px, 28vh, 280px);
+      border-radius: 18px;
+      background:
+        linear-gradient(120deg, transparent 0%, rgba(215,221,210,0.05) 40%, transparent 70%),
+        repeating-linear-gradient(
+          0deg,
+          rgba(215, 221, 210, 0.045) 0 1px,
+          transparent 1px 28px
+        ),
+        linear-gradient(145deg, #232a1f, #141912 60%, #1a2217);
+      box-shadow: 0 30px 80px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(215,221,210,0.08);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      animation: rise 1s ease forwards 0.55s;
+    }
+    .ink-plane::after {
+      content: "DE ↔ PL   ·   EN ↔ PL";
+      position: absolute;
+      left: 1.4rem;
+      bottom: 1.2rem;
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 4vw, 2.2rem);
+      color: rgba(215, 221, 210, 0.72);
+      letter-spacing: 0.04em;
+    }
+    .scan {
+      position: absolute;
+      inset: -20% auto -20% 0;
+      width: 28%;
+      background: linear-gradient(90deg, transparent, var(--glow), transparent);
+      animation: sweep 4.5s ease-in-out infinite;
+    }
+
+    section {
+      padding: 4.5rem 0;
+      border-top: 1px solid rgba(215, 221, 210, 0.1);
+    }
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3rem);
+      margin: 0 0 0.6rem;
+      font-weight: 400;
+    }
+    .section-lead {
+      color: var(--mist);
+      max-width: 40rem;
+      margin: 0 0 2rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    @media (max-width: 760px) {
+      .grid { grid-template-columns: 1fr; }
+      .wrap { width: min(1080px, calc(100% - 1.5rem)); }
+    }
+
+    .dl {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      background: rgba(28, 34, 24, 0.72);
+      border: 1px solid rgba(215, 221, 210, 0.1);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.25rem;
+      transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: rise 0.7s ease forwards;
+    }
+    .dl:nth-child(1) { animation-delay: 0.05s; }
+    .dl:nth-child(2) { animation-delay: 0.12s; }
+    .dl:nth-child(3) { animation-delay: 0.19s; }
+    .dl:nth-child(4) { animation-delay: 0.26s; }
+    .dl:hover {
+      border-color: rgba(111, 158, 114, 0.55);
+      background: rgba(34, 42, 30, 0.9);
+      transform: translateY(-3px);
+    }
+    .dl strong {
+      display: block;
+      font-size: 1.15rem;
+      margin-bottom: 0.25rem;
+    }
+    .meta {
+      color: var(--mist);
+      font-size: 0.9rem;
+    }
+    .pill {
+      display: inline-block;
+      margin-top: 0.85rem;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--accent-2);
+    }
+
+    .prose p { color: var(--mist); max-width: 46rem; }
+    .prose a { color: var(--accent); }
+    .prose ul {
+      color: var(--mist);
+      padding-left: 1.2rem;
+      max-width: 46rem;
+    }
+    .prose code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.88em;
+      background: rgba(215,221,210,0.08);
+      padding: 0.1em 0.35em;
+      border-radius: 4px;
+    }
+
+    .donate {
+      background:
+        linear-gradient(135deg, rgba(111,158,114,0.14), rgba(196,163,90,0.08));
+      border: 1px solid rgba(215,221,210,0.12);
+      border-radius: 18px;
+      padding: 1.5rem 1.6rem;
+    }
+    .donate p { margin: 0.4rem 0 1rem; color: var(--mist); }
+
+    footer {
+      padding: 2.5rem 0 3.5rem;
+      color: var(--mist);
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(215, 221, 210, 0.1);
+    }
+
+    @keyframes rise {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes sweep {
+      0%, 100% { transform: translateX(-30%); opacity: 0.15; }
+      50% { transform: translateX(280%); opacity: 0.55; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="hero">
+      <h1 class="brand">Blumek<br /><em>Labs</em></h1>
+      <p class="lede">
+        Otwarte słowniki PocketBook (DE↔PL, EN↔PL) — skompilowane pod czytanie z długim naciśnięciem słowa, z formami odmiany.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#download">Pobierz słowniki</a>
+        <a class="btn btn-ghost" href="#sources">Źródła danych</a>
+      </div>
+      <div class="ink-plane" aria-hidden="true"><span class="scan"></span></div>
+    </header>
+
+    <section id="download">
+      <h2>Słowniki</h2>
+      <p class="section-lead">
+        Wrzuć pliki <code>.dic</code> do ukrytego folderu <code>system/dictionaries</code> na PocketBook Verse (i podobnych).
+      </p>
+      <div class="grid">
+        <a class="dl" href="dictionaries/Niemiecko-Polski.dic">
+          <strong>Niemiecko-Polski</strong>
+          <div class="meta">~290k haseł · z formami odmiany · 5.8&nbsp;MB</div>
+          <span class="pill">Pobierz .dic</span>
+        </a>
+        <a class="dl" href="dictionaries/Polsko-Niemiecki.dic">
+          <strong>Polsko-Niemiecki</strong>
+          <div class="meta">~330k haseł · z formami odmiany · 6.4&nbsp;MB</div>
+          <span class="pill">Pobierz .dic</span>
+        </a>
+        <a class="dl" href="dictionaries/Angielsko-Polski.dic">
+          <strong>Angielsko-Polski</strong>
+          <div class="meta">~232k haseł · z formami odmiany · 4.3&nbsp;MB</div>
+          <span class="pill">Pobierz .dic</span>
+        </a>
+        <a class="dl" href="dictionaries/Polsko-Angielski.dic">
+          <strong>Polsko-Angielski</strong>
+          <div class="meta">~425k haseł · z formami odmiany · 6.9&nbsp;MB</div>
+          <span class="pill">Pobierz .dic</span>
+        </a>
+      </div>
+      <p class="section-lead" style="margin-top:1.5rem">
+        Sumy kontrolne: <a href="dictionaries/SHA256SUMS">SHA256SUMS</a>.
+        W słowniku wpisz <code>blumek</code> lub <code>credits</code>, żeby zobaczyć podpis pakietu.
+      </p>
+    </section>
+
+    <section id="sources" class="prose">
+      <h2>Źródła i licencja</h2>
+      <p>
+        Te pliki to <strong>kompilacja i pakiet</strong> pod PocketBook od <strong>Blumek Labs</strong>.
+        Sama treść leksykalna pochodzi z otwartych źródeł — korzystaj śmiało, ale zachowaj atrybucję upstream.
+      </p>
+      <ul>
+        <li><a href="https://www.wiktionary.org/">Wiktionary</a> / <a href="https://kaikki.org/">Kaikki.org</a> (ekstrakcja wiktextract) — głównie <strong>CC BY-SA</strong></li>
+        <li><a href="https://freedict.org/">FreeDict</a> + WikDict (pary DE↔PL, EN↔PL) — <strong>CC BY-SA</strong> / dokumentacja FreeDict</li>
+        <li>Polskie Wikisłownik (plwiktionary via Kaikki) — glossy PL dla haseł DE/EN</li>
+      </ul>
+      <p>
+        Pipeline (łączenie, formy odmiany, konwersja do formatu SDIC <code>.dic</code>, branding) —
+        praca Blumek Labs. Przy redystrybucji prosimy o wzmiankę
+        „compiled &amp; packaged by Blumek Labs” oraz zachowanie wymagań CC BY-SA źródeł.
+      </p>
+      <p>
+        To nie jest komercyjny słownik wydawniczy (PWN itd.). Jakość jest „bardzo dobra do czytania”,
+        nie „idealna leksykograficznie”.
+      </p>
+    </section>
+
+    <section id="install" class="prose">
+      <h2>Instalacja na PocketBook</h2>
+      <ol style="color:var(--mist); max-width:46rem; padding-left:1.2rem">
+        <li>Podłącz czytnik USB (PC Link).</li>
+        <li>Pokaż ukryte pliki systemowe i wejdź w <code>system/dictionaries</code>.</li>
+        <li>Skopiuj wybrane <code>.dic</code>.</li>
+        <li>Odłącz USB i wybierz słownik przy długim naciśnięciu słowa.</li>
+      </ol>
+    </section>
+
+    <section id="support">
+      <h2>Wsparcie</h2>
+      <div class="donate">
+        <strong>Korzystasz i lubisz?</strong>
+        <p>
+          Projekt jest darmowy i open. Jeśli Ci pomaga przy nauce / czytaniu —
+          kawusia albo mały donate bardzo motywuje do kolejnych par językowych.
+        </p>
+        <!-- Podmień href na swój link (Buy Me a Coffee / PayPal / Revolut) -->
+        <a class="btn btn-primary" href="https://github.com/sponsors/blumeklabs">Donate / Sponsor</a>
+      </div>
+    </section>
+
+    <footer>
+      Made by Blumek Labs ·
+      <a href="https://github.com/blumeklabs/blumeklabs.github.io" style="color:var(--accent)">kod strony</a>
+      · dane leksykalne: Wiktionary / FreeDict (CC BY-SA)
+    </footer>
+  </main>
+</body>
+</html>
