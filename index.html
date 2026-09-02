@@ -1,431 +1,227 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sableworks — Free offline e-reader dictionaries (.dic)</title>
-  <meta name="description" content="Free offline bilingual dictionaries for e-readers (.dic): English, German, French, and Spanish ↔ Polish. Built for long-press lookup while reading. Lexical content CC BY-SA. Created by Mateusz Blumensztajn / Sableworks." />
-  <meta name="keywords" content="ebook dictionary, e-reader dictionary, .dic dictionary, German Polish dictionary, English Polish dictionary, French Polish dictionary, Spanish Polish dictionary, offline dictionary, PocketBook dictionary, e-ink dictionary, bilingual dictionary, DE-PL, EN-PL, FR-PL, ES-PL, Sableworks" />
-  <meta property="og:title" content="Free offline e-reader dictionaries — Sableworks" />
-  <meta property="og:description" content="English, German, French, and Spanish ↔ Polish .dic packs for ebook readers. Offline lookup with word forms. Lexical data CC BY-SA." />
-  <meta property="og:url" content="https://sableworks.github.io/ebook-dictionaries/" />
-  <meta property="og:type" content="website" />
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Free offline e-reader dictionaries — Sableworks" />
-  <meta name="twitter:description" content="English, German, French, and Spanish ↔ Polish .dic packs for ebook readers. Lexical data CC BY-SA." />
-  <link rel="canonical" href="https://sableworks.github.io/ebook-dictionaries/" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --ink: #12150f;
-      --paper: #d7ddd2;
-      --mist: #aeb8a8;
-      --accent: #6f9e72;
-      --accent-2: #c4a35a;
-      --glow: rgba(111, 158, 114, 0.18);
-      --radius: 14px;
-      --font-display: "Instrument Serif", Georgia, serif;
-      --font-body: "Manrope", system-ui, sans-serif;
-    }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      color: var(--paper);
-      font-family: var(--font-body);
-      background:
-        radial-gradient(1200px 700px at 10% -10%, rgba(111, 158, 114, 0.16), transparent 55%),
-        radial-gradient(900px 600px at 100% 0%, rgba(196, 163, 90, 0.10), transparent 50%),
-        linear-gradient(165deg, #0e120c 0%, #171c14 45%, #10140e 100%);
-      min-height: 100vh;
-      line-height: 1.55;
-    }
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.07;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-      z-index: 0;
-    }
-    .wrap {
-      position: relative;
-      z-index: 1;
-      width: min(1080px, calc(100% - 2.5rem));
-      margin: 0 auto;
-    }
-    .hero {
-      min-height: 100vh;
-      display: grid;
-      align-content: center;
-      padding: 4rem 0 3rem;
-      gap: 1.25rem;
-    }
-    .brand {
-      font-family: var(--font-display);
-      font-size: clamp(3.4rem, 10vw, 6.4rem);
-      line-height: 0.92;
-      letter-spacing: -0.02em;
-      margin: 0;
-      opacity: 0;
-      transform: translateY(18px);
-      animation: rise 0.9s ease forwards 0.1s;
-    }
-    .brand em { font-style: italic; color: var(--accent); }
-    .byline {
-      margin: 0;
-      color: var(--mist);
-      font-size: 0.95rem;
-      opacity: 0;
-      transform: translateY(12px);
-      animation: rise 0.9s ease forwards 0.2s;
-    }
-    .lede {
-      max-width: 38rem;
-      font-size: clamp(1.05rem, 2.2vw, 1.25rem);
-      color: var(--mist);
-      margin: 0.35rem 0 0;
-      opacity: 0;
-      transform: translateY(18px);
-      animation: rise 0.9s ease forwards 0.28s;
-    }
-    .lede code {
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: 0.9em;
-      background: rgba(215,221,210,0.08);
-      padding: 0.1em 0.35em;
-      border-radius: 4px;
-    }
-    .cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.85rem;
-      margin-top: 1.6rem;
-      opacity: 0;
-      transform: translateY(18px);
-      animation: rise 0.9s ease forwards 0.45s;
-    }
-    .btn {
-      appearance: none;
-      border: 0;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.85rem 1.2rem;
-      border-radius: 999px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: transform 0.2s ease, background 0.2s ease;
-    }
-    .btn:hover { transform: translateY(-2px); }
-    .btn-primary { background: var(--accent); color: #0d120c; }
-    .btn-ghost {
-      background: transparent;
-      color: var(--paper);
-      box-shadow: inset 0 0 0 1px rgba(215, 221, 210, 0.28);
-    }
-    .ink-plane {
-      margin-top: 2.5rem;
-      height: clamp(160px, 28vh, 280px);
-      border-radius: 18px;
-      background:
-        linear-gradient(120deg, transparent 0%, rgba(215,221,210,0.05) 40%, transparent 70%),
-        repeating-linear-gradient(0deg, rgba(215, 221, 210, 0.045) 0 1px, transparent 1px 28px),
-        linear-gradient(145deg, #232a1f, #141912 60%, #1a2217);
-      box-shadow: 0 30px 80px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(215,221,210,0.08);
-      position: relative;
-      overflow: hidden;
-      opacity: 0;
-      animation: rise 1s ease forwards 0.55s;
-    }
-    .ink-plane::after {
-      content: "Offline · .dic · DE↔PL · EN↔PL · CC BY-SA";
-      position: absolute;
-      left: 1.4rem;
-      bottom: 1.2rem;
-      font-family: var(--font-display);
-      font-size: clamp(1.1rem, 3.2vw, 1.85rem);
-      color: rgba(215, 221, 210, 0.72);
-      letter-spacing: 0.04em;
-    }
-    .scan {
-      position: absolute;
-      inset: -20% auto -20% 0;
-      width: 28%;
-      background: linear-gradient(90deg, transparent, var(--glow), transparent);
-      animation: sweep 4.5s ease-in-out infinite;
-    }
-    section {
-      padding: 4.5rem 0;
-      border-top: 1px solid rgba(215, 221, 210, 0.1);
-    }
-    h2 {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 5vw, 3rem);
-      margin: 0 0 0.6rem;
-      font-weight: 400;
-    }
-    .section-lead {
-      color: var(--mist);
-      max-width: 42rem;
-      margin: 0 0 2rem;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1rem;
-    }
-    @media (max-width: 760px) {
-      .grid { grid-template-columns: 1fr; }
-      .wrap { width: min(1080px, calc(100% - 1.5rem)); }
-    }
-    .dl {
-      display: block;
-      text-decoration: none;
-      color: inherit;
-      background: rgba(28, 34, 24, 0.72);
-      border: 1px solid rgba(215, 221, 210, 0.1);
-      border-radius: var(--radius);
-      padding: 1.2rem 1.25rem;
-      transition: border-color 0.2s ease, transform 0.2s ease, background 0.2s ease;
-      opacity: 0;
-      transform: translateY(12px);
-      animation: rise 0.7s ease forwards;
-    }
-    .dl:nth-child(1) { animation-delay: 0.05s; }
-    .dl:nth-child(2) { animation-delay: 0.12s; }
-    .dl:nth-child(3) { animation-delay: 0.19s; }
-    .dl:nth-child(4) { animation-delay: 0.26s; }
-    .dl:hover {
-      border-color: rgba(111, 158, 114, 0.55);
-      background: rgba(34, 42, 30, 0.9);
-      transform: translateY(-3px);
-    }
-    .dl strong { display: block; font-size: 1.15rem; margin-bottom: 0.25rem; }
-    .meta { color: var(--mist); font-size: 0.9rem; }
-    .pill {
-      display: inline-block;
-      margin-top: 0.85rem;
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--accent-2);
-    }
-    .prose p { color: var(--mist); max-width: 46rem; }
-    .prose a { color: var(--accent); }
-    .prose ul, .prose ol {
-      color: var(--mist);
-      padding-left: 1.2rem;
-      max-width: 46rem;
-    }
-    .prose code {
-      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: 0.88em;
-      background: rgba(215,221,210,0.08);
-      padding: 0.1em 0.35em;
-      border-radius: 4px;
-    }
-    .license-callout {
-      border: 1px solid rgba(196, 163, 90, 0.35);
-      background: rgba(196, 163, 90, 0.08);
-      border-radius: 14px;
-      padding: 1rem 1.15rem;
-      max-width: 46rem;
-      color: var(--mist);
-      margin: 0 0 1.5rem;
-    }
-    .donate {
-      background: linear-gradient(135deg, rgba(111,158,114,0.14), rgba(196,163,90,0.08));
-      border: 1px solid rgba(215,221,210,0.12);
-      border-radius: 18px;
-      padding: 1.5rem 1.6rem;
-    }
-    .donate p { margin: 0.4rem 0 1rem; color: var(--mist); }
-    footer {
-      padding: 2.5rem 0 3.5rem;
-      color: var(--mist);
-      font-size: 0.9rem;
-      border-top: 1px solid rgba(215, 221, 210, 0.1);
-    }
-    @keyframes rise { to { opacity: 1; transform: translateY(0); } }
-    @keyframes sweep {
-      0%, 100% { transform: translateX(-30%); opacity: 0.15; }
-      50% { transform: translateX(280%); opacity: 0.55; }
-    }
-  </style>
-</head>
-<body>
-  <main class="wrap">
-    <header class="hero">
-      <h1 class="brand">Sable<em>works</em></h1>
-      <p class="byline">Created by Mateusz Blumensztajn</p>
-      <p class="lede">
-        Free offline bilingual dictionaries for e-readers — English, German, French, and Spanish ↔ Polish in <code>.dic</code> format,
-        built for looking up words while you read (including inflected forms).
-      </p>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="#download">Download free dictionaries</a>
-        <a class="btn btn-ghost" href="#sources">Sources &amp; CC BY-SA</a>
-        <a class="btn btn-ghost" href="https://github.com/Sableworks/ebook-dictionaries">GitHub repo</a>
-      </div>
-      <div class="ink-plane" aria-hidden="true"><span class="scan"></span></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-Ink Dictionaries — Sableworks</title>
+    <meta
+      name="description"
+      content="Free offline bilingual dictionaries for e-readers (.dic): English, German, French, and Spanish ↔ Polish. Built for lookup while reading. Lexical content CC BY-SA."
+    />
+    <link rel="canonical" href="https://sableworks.github.io/ebook-dictionaries/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sableworks.github.io/ebook-dictionaries/" />
+    <meta property="og:title" content="E-Ink Dictionaries — Sableworks" />
+    <meta
+      property="og:description"
+      content="English, German, French, and Spanish ↔ Polish .dic packs for ebook readers. Offline lookup with word forms. Lexical data CC BY-SA."
+    />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="mark.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" id="top">
+      <nav class="nav" aria-label="Primary">
+        <a class="nav-mark" href="https://sableworks.github.io/"
+          ><span class="accent">Sable</span><span class="nav-mark-suffix">works</span></a
+        >
+        <ul class="nav-links">
+          <li><a href="https://sableworks.github.io/#work">Work</a></li>
+          <li>
+            <a href="https://github.com/Sableworks" rel="noopener noreferrer">GitHub</a>
+          </li>
+          <li><a href="https://sableworks.github.io/#support">Support</a></li>
+        </ul>
+      </nav>
     </header>
 
-    <section id="why" class="prose">
-      <h2>Made for reading, not for desk study</h2>
-      <p>
-        Most stock e-reader dictionaries are tiny — tap a past tense or plural and you get nothing.
-        These packs are compiled for <strong>real book text</strong>: lemmas plus common word forms,
-        so long-press lookup hits more often when you are deep in a novel.
-      </p>
-      <ul>
-        <li><strong>English, German, French, Spanish ↔ Polish</strong> — both directions for each pair</li>
-        <li><strong>Offline</strong> — no Wi‑Fi, no account, no cloud</li>
-        <li><strong><code>.dic</code> format</strong> used by many ebook / e-ink readers</li>
-        <li><strong>Open lexical data</strong> under <strong>CC BY-SA</strong> (Wiktionary / FreeDict)</li>
-        <li>Tested on <strong>PocketBook</strong> (e.g. Verse); other devices that accept the same <code>.dic</code> packs can use them too</li>
-      </ul>
-    </section>
+    <main id="main">
+      <section class="hero hero--product" aria-labelledby="product-title">
+        <p class="eyebrow">E-readers · CC BY-SA</p>
+        <h1 id="product-title">E-Ink Dictionaries</h1>
+        <p class="hero-sub">Lookup while you read, not at a desk.</p>
+        <p class="hero-lead">
+          Free offline bilingual dictionaries in <code>.dic</code> format —
+          English, German, French, and Spanish ↔ Polish, including common word
+          forms. Tested on PocketBook; other readers that accept the same packs
+          can use them too.
+        </p>
+        <p class="hero-actions">
+          <a class="text-link" href="#download">Download</a>
+          <span aria-hidden="true"> · </span>
+          <a
+            class="text-link"
+            href="https://github.com/Sableworks/ebook-dictionaries"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+        </p>
+      </section>
 
-    <section id="download">
-      <h2>Download</h2>
-      <div class="license-callout">
-        <strong>License note:</strong> the word content inside these <code>.dic</code> files is
-        <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a>
-        (from Wiktionary / FreeDict and related open sources). Packaging by Sableworks.
-        See <a href="ATTRIBUTION.md">ATTRIBUTION.md</a>.
-      </div>
-      <p class="section-lead">
-        Grab the language pair you need.
-      </p>
-      <div class="grid">
-        <a class="dl" href="dictionaries/Angielsko-Polski.dic">
-          <strong>English → Polish</strong>
-          <div class="meta">Angielsko-Polski.dic · ~232k entries · with forms · 4.3&nbsp;MB</div>
-          <span class="pill">Download .dic</span>
-        </a>
-        <a class="dl" href="dictionaries/Polsko-Angielski.dic">
-          <strong>Polish → English</strong>
-          <div class="meta">Polsko-Angielski.dic · ~425k entries · with forms · 6.9&nbsp;MB</div>
-          <span class="pill">Download .dic</span>
-        </a>
-        <a class="dl" href="dictionaries/Niemiecko-Polski.dic">
-          <strong>German → Polish</strong>
-          <div class="meta">Niemiecko-Polski.dic · ~290k entries · with forms · 5.8&nbsp;MB</div>
-          <span class="pill">Download .dic</span>
-        </a>
-        <a class="dl" href="dictionaries/Polsko-Niemiecki.dic">
-          <strong>Polish → German</strong>
-          <div class="meta">Polsko-Niemiecki.dic · ~330k entries · with forms · 6.4&nbsp;MB</div>
-          <span class="pill">Download .dic</span>
-        </a>
-        <a class="dl" href="dictionaries/Francusko-Polski.dic">
-          <strong>French → Polish</strong>
-          <div class="meta">Francusko-Polski.dic · ~174k entries · with forms · 2.6&nbsp;MB</div>
-          <span class="pill">Download .dic</span>
-        </a>
-        <a class="dl" href="dictionaries/Polsko-Francuski.dic">
-          <strong>Polish → French</strong>
-          <div class="meta">Polsko-Francuski.dic · ~229k entries · with forms · 3.5&nbsp;MB</div>
-          <span class="pill">Download .dic</span>
-        </a>
-        <a class="dl" href="dictionaries/Hiszpansko-Polski.dic">
-          <strong>Spanish → Polish</strong>
-          <div class="meta">Hiszpansko-Polski.dic · ~342k entries · with forms · 3.3&nbsp;MB</div>
-          <span class="pill">Download .dic</span>
-        </a>
-        <a class="dl" href="dictionaries/Polsko-Hiszpanski.dic">
-          <strong>Polish → Spanish</strong>
-          <div class="meta">Polsko-Hiszpanski.dic · ~255k entries · with forms · 4.0&nbsp;MB</div>
-          <span class="pill">Download .dic</span>
-        </a>
-      </div>
-      <p class="section-lead" style="margin-top:1.5rem">
-        Checksums: <a href="dictionaries/SHA256SUMS">SHA256SUMS</a>.
-        In the dictionary UI, search <code>sable</code>, <code>credits</code>, or <code>license</code> for the pack signature.
-      </p>
-    </section>
+      <section class="section" id="download" aria-labelledby="download-title">
+        <header class="section-header">
+          <p class="eyebrow">01 — Download</p>
+          <h2 id="download-title">Grab a language pair</h2>
+          <p class="section-lead">
+            Word content inside the <code>.dic</code> files is
+            <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a>
+            (Wiktionary / FreeDict). Packaging by Sableworks. See
+            <a href="ATTRIBUTION.md">ATTRIBUTION.md</a>.
+          </p>
+        </header>
 
-    <section id="sources" class="prose">
-      <h2>Sources &amp; CC BY-SA</h2>
-      <p>
-        <strong>Lexical content in the <code>.dic</code> files is
-        <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a></strong>
-        (Attribution–ShareAlike). You may use and share them — credit the sources below and respect ShareAlike.
-      </p>
-      <p>
-        <strong>Compilation &amp; packaging</strong> by <strong>Sableworks</strong>
-        (created by Mateusz Blumensztajn).
-        Repository:
-        <a href="https://github.com/Sableworks/ebook-dictionaries">github.com/Sableworks/ebook-dictionaries</a>.
-      </p>
-      <ul>
-        <li>
-          <a href="https://www.wiktionary.org/">Wiktionary</a>
-          via <a href="https://kaikki.org/">Kaikki.org</a>
-          / <a href="https://github.com/tatuylonen/wiktextract">wiktextract</a>
-          — <strong>CC BY-SA</strong>
-        </li>
-        <li>
-          <a href="https://pl.wiktionary.org/">Polish Wiktionary</a> (Kaikki) — <strong>CC BY-SA</strong>
-        </li>
-        <li>
-          <a href="https://freedict.org/">FreeDict</a> + WikDict
-          (<code>deu-pol</code>, <code>pol-deu</code>, <code>eng-pol</code>, <code>pol-eng</code>,
-          <code>fra-pol</code>, <code>pol-fra</code>, <code>spa-pol</code>, <code>pol-spa</code>)
-          — <strong>CC BY-SA</strong>
-        </li>
-      </ul>
-      <p>Full details: <a href="ATTRIBUTION.md">ATTRIBUTION.md</a>.</p>
-    </section>
+        <div class="callout">
+          In the dictionary UI, search <code>sable</code>, <code>credits</code>,
+          or <code>license</code> for the pack signature. Checksums:
+          <a href="dictionaries/SHA256SUMS">SHA256SUMS</a>.
+        </div>
 
-    <section id="install" class="prose">
-      <h2>Install on your e-reader</h2>
-      <p>Exact folder names vary by brand. On <strong>PocketBook</strong> (Verse and similar):</p>
-      <ol>
-        <li>Connect over USB (PC Link / mass storage).</li>
-        <li>Show hidden system files and open <code>system/dictionaries</code>.</li>
-        <li>Copy the chosen <code>.dic</code> files there.</li>
-        <li>Disconnect USB, then pick the dictionary on long-press word lookup.</li>
-      </ol>
-      <p>
-        On other e-readers that support the same <code>.dic</code> packs, use that device’s dictionary folder.
-        Different formats will not work without conversion.
-      </p>
-    </section>
+        <div class="dl-grid">
+          <a class="dl-card" href="dictionaries/Angielsko-Polski.dic">
+            <strong>English → Polish</strong>
+            <p class="meta">Angielsko-Polski.dic · ~232k entries · 4.3 MB</p>
+            <span class="project-link">Download .dic</span>
+          </a>
+          <a class="dl-card" href="dictionaries/Polsko-Angielski.dic">
+            <strong>Polish → English</strong>
+            <p class="meta">Polsko-Angielski.dic · ~425k entries · 6.9 MB</p>
+            <span class="project-link">Download .dic</span>
+          </a>
+          <a class="dl-card" href="dictionaries/Niemiecko-Polski.dic">
+            <strong>German → Polish</strong>
+            <p class="meta">Niemiecko-Polski.dic · ~290k entries · 5.8 MB</p>
+            <span class="project-link">Download .dic</span>
+          </a>
+          <a class="dl-card" href="dictionaries/Polsko-Niemiecki.dic">
+            <strong>Polish → German</strong>
+            <p class="meta">Polsko-Niemiecki.dic · ~330k entries · 6.4 MB</p>
+            <span class="project-link">Download .dic</span>
+          </a>
+          <a class="dl-card" href="dictionaries/Francusko-Polski.dic">
+            <strong>French → Polish</strong>
+            <p class="meta">Francusko-Polski.dic · ~174k entries · 2.6 MB</p>
+            <span class="project-link">Download .dic</span>
+          </a>
+          <a class="dl-card" href="dictionaries/Polsko-Francuski.dic">
+            <strong>Polish → French</strong>
+            <p class="meta">Polsko-Francuski.dic · ~229k entries · 3.5 MB</p>
+            <span class="project-link">Download .dic</span>
+          </a>
+          <a class="dl-card" href="dictionaries/Hiszpansko-Polski.dic">
+            <strong>Spanish → Polish</strong>
+            <p class="meta">Hiszpansko-Polski.dic · ~342k entries · 3.3 MB</p>
+            <span class="project-link">Download .dic</span>
+          </a>
+          <a class="dl-card" href="dictionaries/Polsko-Hiszpanski.dic">
+            <strong>Polish → Spanish</strong>
+            <p class="meta">Polsko-Hiszpanski.dic · ~255k entries · 4.0 MB</p>
+            <span class="project-link">Download .dic</span>
+          </a>
+        </div>
+      </section>
 
-    <section id="support">
-      <h2>Support</h2>
-      <div class="donate">
-        <strong>Finding this useful?</strong>
+      <section class="section prose" id="install" aria-labelledby="install-title">
+        <header class="section-header">
+          <p class="eyebrow">02 — Install</p>
+          <h2 id="install-title">On your e-reader</h2>
+        </header>
+        <p>Exact folder names vary by brand. On PocketBook (Verse and similar):</p>
+        <ol class="install">
+          <li>
+            Show hidden files — Mac: <kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>.</kbd>;
+            Windows: File Explorer → View → Hidden items.
+          </li>
+          <li>Copy the <code>.dic</code> files into <code>system/dictionaries</code>.</li>
+          <li>Eject USB, then pick the dictionary on long-press lookup.</li>
+        </ol>
         <p>
-          The project is free and open. If it helps your reading or language learning,
-          a coffee on Ko-fi is always appreciated.
+          Other e-readers that accept the same <code>.dic</code> packs: use that
+          device’s dictionary folder. A different format will not work without
+          conversion.
         </p>
-        <script type="text/javascript" src="https://storage.ko-fi.com/cdn/widget/Widget_2.js"></script>
-        <script type="text/javascript">
-          kofiwidget2.init("Support me on Ko-fi", "#3dff87", "C3Q525T6Y5");
-          kofiwidget2.draw();
-        </script>
-        <p style="margin-top:1rem;margin-bottom:0;font-size:0.9rem">
-          Or open directly:
-          <a href="https://ko-fi.com/sableworks">ko-fi.com/sableworks</a>
+        <p>
+          Stock dictionaries are often tiny — tap a past tense or plural and you
+          get nothing. These packs include lemmas plus common word forms, so
+          lookup hits more often in a novel.
         </p>
-      </div>
-    </section>
+      </section>
 
-    <footer>
-      Sableworks · created by Mateusz Blumensztajn ·
-      <a href="https://github.com/Sableworks/ebook-dictionaries" style="color:var(--accent)">GitHub</a>
-      · lexical content
-      <a href="https://creativecommons.org/licenses/by-sa/4.0/" style="color:var(--accent)">CC BY-SA</a>
-      · <a href="ATTRIBUTION.md" style="color:var(--accent)">ATTRIBUTION.md</a>
+      <section class="section prose" id="sources" aria-labelledby="sources-title">
+        <header class="section-header">
+          <p class="eyebrow">03 — License</p>
+          <h2 id="sources-title">Sources &amp; CC BY-SA</h2>
+        </header>
+        <p>
+          Lexical content in the <code>.dic</code> files is
+          <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA</a>.
+          You may use and share them — credit the sources and respect ShareAlike.
+          Compilation and packaging by Sableworks (created by Mateusz Blumensztajn).
+        </p>
+        <ul>
+          <li>
+            <a href="https://www.wiktionary.org/">Wiktionary</a> via
+            <a href="https://kaikki.org/">Kaikki.org</a> /
+            <a href="https://github.com/tatuylonen/wiktextract">wiktextract</a>
+          </li>
+          <li>
+            <a href="https://pl.wiktionary.org/">Polish Wiktionary</a> (Kaikki)
+          </li>
+          <li>
+            <a href="https://freedict.org/">FreeDict</a> + WikDict
+            (<code>deu-pol</code>, <code>pol-deu</code>, <code>eng-pol</code>,
+            <code>pol-eng</code>, <code>fra-pol</code>, <code>pol-fra</code>,
+            <code>spa-pol</code>, <code>pol-spa</code>)
+          </li>
+        </ul>
+        <p>Full details: <a href="ATTRIBUTION.md">ATTRIBUTION.md</a>.</p>
+      </section>
+
+      <section class="section support" id="support" aria-labelledby="support-title">
+        <header class="section-header">
+          <p class="eyebrow">04 — Support</p>
+          <h2 id="support-title">If this helped you grow with me</h2>
+          <p class="section-lead">
+            I’m one person learning in public. Every Ko-fi is noticed — it
+            goes into tools and time for the next release, not a shop. Thank
+            you for making the next project possible.
+          </p>
+        </header>
+        <a
+          class="kofi-btn"
+          href="https://ko-fi.com/C3Q525T6Y5"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Support me on Ko-fi
+        </a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <a class="footer-mark" href="#top">
+        <img src="mark.png" width="40" height="40" alt="Sableworks" />
+      </a>
+      <p class="footer-meta">
+        <a href="https://github.com/Sableworks" rel="noopener noreferrer">GitHub</a>
+        <span aria-hidden="true"> · </span>
+        <a href="mailto:blumek13@gmail.com">blumek13@gmail.com</a>
+        <span aria-hidden="true"> · </span>
+        <span id="year"></span>
+      </p>
     </footer>
-  </main>
-</body>
+
+    <script src="script.js"></script>
+  </body>
 </html>
