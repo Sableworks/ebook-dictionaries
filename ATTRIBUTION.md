@@ -22,15 +22,17 @@ Full CC BY-SA 4.0 text: https://creativecommons.org/licenses/by-sa/4.0/
 
 | Source | What we used | Typical license |
 |--------|----------------|-----------------|
-| [Wiktionary](https://www.wiktionary.org/) via [Kaikki.org](https://kaikki.org/) / [wiktextract](https://github.com/tatuylonen/wiktextract) | Headwords, translations, inflection forms (EN/DE dumps) | **CC BY-SA** |
-| [Polish Wiktionary](https://pl.wiktionary.org/) via Kaikki | Polish glosses for DE/EN; PL↔DE / PL↔EN translations; Polish forms | **CC BY-SA** |
-| [FreeDict](https://freedict.org/) + WikDict | Pairs `deu-pol`, `pol-deu`, `eng-pol`, `pol-eng` (StarDict) | **CC BY-SA** (plus terms in FreeDict packages) |
+| [Wiktionary](https://www.wiktionary.org/) via [Kaikki.org](https://kaikki.org/) / [wiktextract](https://github.com/tatuylonen/wiktextract) | Headwords, translations, inflection forms (EN/DE/FR/ES dumps) | **CC BY-SA** |
+| [Polish Wiktionary](https://pl.wiktionary.org/) via Kaikki | Polish glosses; PL↔EN/DE/FR/ES translations; Polish forms | **CC BY-SA** |
+| [FreeDict](https://freedict.org/) + WikDict | Pairs `deu-pol`, `pol-deu`, `eng-pol`, `pol-eng`, `fra-pol`, `pol-fra`, `spa-pol`, `pol-spa` (StarDict) | **CC BY-SA** (plus terms in FreeDict packages) |
 
 FreeDict releases used in the build include:
 
 - `freedict-deu-pol` / `freedict-pol-deu` (WikDict, 2025.11.23)
 - `freedict-eng-pol` (Piotrowski+Saloni / FreeDict 0.2.1)
 - `freedict-pol-eng` (WikDict, 2025.11.23)
+- `freedict-fra-pol` / `freedict-pol-fra` (WikDict, 2025.11.23)
+- `freedict-spa-pol` / `freedict-pol-spa` (WikDict, 2025.11.23)
 
 ## What is Sableworks packaging (not the CC word data)
 
