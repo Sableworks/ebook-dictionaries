@@ -37,9 +37,10 @@ FreeDict releases used in the build include:
 ## What is Sableworks packaging (not the CC word data)
 
 - compile / merge pipeline,
-- inflection forms for better on-device lookup while reading,
+- inflection handling for on-device lookup (regular forms via reader stemming;
+  irregular / special forms kept as explicit entries),
 - conversion to e-reader `.dic` (SDIC) packs,
-- branding / credits in the pack,
+- searchable packaging credits inside the pack (`sable` / `credits` / `license`),
 - this site.
 
 Site and packaging code: see [`LICENSE`](LICENSE) (MIT + notice about CC data).
