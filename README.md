@@ -6,7 +6,7 @@
 
 Created by **Mateusz Blumensztajn** / **Sableworks**.
 
-Free bilingual dictionaries in **`.dic`** format for ebook / e-ink readers — **English, German, French, and Spanish ↔ Polish** — offline long-press lookup while reading, with common word forms included.
+Free bilingual dictionaries in **`.dic`** format for ebook / e-ink readers — **English, German, French, and Spanish ↔ Polish** — offline long-press lookup while reading. Regular inflected forms rely on the reader’s stemming; irregular and special forms stay as explicit entries with meanings.
 
 **Lexical content is [CC BY-SA](https://creativecommons.org/licenses/by-sa/4.0/)** (Wiktionary / FreeDict and related open sources). See [`ATTRIBUTION.md`](ATTRIBUTION.md).
 
@@ -16,14 +16,14 @@ Built and tested on **PocketBook** (e.g. Verse). Other devices that accept the s
 
 | File | Direction | Approx. size |
 |------|-----------|--------------|
-| [`dictionaries/Angielsko-Polski.dic`](dictionaries/Angielsko-Polski.dic) | English → Polish | ~232k entries |
-| [`dictionaries/Polsko-Angielski.dic`](dictionaries/Polsko-Angielski.dic) | Polish → English | ~425k entries |
-| [`dictionaries/Niemiecko-Polski.dic`](dictionaries/Niemiecko-Polski.dic) | German → Polish | ~290k entries |
-| [`dictionaries/Polsko-Niemiecki.dic`](dictionaries/Polsko-Niemiecki.dic) | Polish → German | ~330k entries |
-| [`dictionaries/Francusko-Polski.dic`](dictionaries/Francusko-Polski.dic) | French → Polish | ~174k entries |
-| [`dictionaries/Polsko-Francuski.dic`](dictionaries/Polsko-Francuski.dic) | Polish → French | ~229k entries |
-| [`dictionaries/Hiszpansko-Polski.dic`](dictionaries/Hiszpansko-Polski.dic) | Spanish → Polish | ~342k entries |
-| [`dictionaries/Polsko-Hiszpanski.dic`](dictionaries/Polsko-Hiszpanski.dic) | Polish → Spanish | ~255k entries |
+| [`dictionaries/Angielsko-Polski.dic`](dictionaries/Angielsko-Polski.dic) | English → Polish | ~140k entries |
+| [`dictionaries/Polsko-Angielski.dic`](dictionaries/Polsko-Angielski.dic) | Polish → English | ~243k entries |
+| [`dictionaries/Niemiecko-Polski.dic`](dictionaries/Niemiecko-Polski.dic) | German → Polish | ~171k entries |
+| [`dictionaries/Polsko-Niemiecki.dic`](dictionaries/Polsko-Niemiecki.dic) | Polish → German | ~206k entries |
+| [`dictionaries/Francusko-Polski.dic`](dictionaries/Francusko-Polski.dic) | French → Polish | ~98k entries |
+| [`dictionaries/Polsko-Francuski.dic`](dictionaries/Polsko-Francuski.dic) | Polish → French | ~127k entries |
+| [`dictionaries/Hiszpansko-Polski.dic`](dictionaries/Hiszpansko-Polski.dic) | Spanish → Polish | ~255k entries |
+| [`dictionaries/Polsko-Hiszpanski.dic`](dictionaries/Polsko-Hiszpanski.dic) | Polish → Spanish | ~142k entries |
 
 Checksums: [`dictionaries/SHA256SUMS`](dictionaries/SHA256SUMS).
 
